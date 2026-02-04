@@ -2,50 +2,110 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Surya Sekhar Nag | Web Developer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Surya Sekhar Nag | Portfolio</title>
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-    <nav class="navbar">
-        <h2 class="logo">Surya.dev</h2>
-        <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Skills</a></li>
-            <li><a href="#">Projects</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-    </nav>
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar">
+    <div class="logo">Surya Sekhar Nag</div>
+    <ul class="nav-links">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+    </ul>
+</nav>
 
-    <section class="hero">
-        <div class="hero-text">
-            <h1>Hello, I'm Surya</h1>
-            <p>Aspiring MERN Stack Web Developer</p>
-            <button>View Projects</button>
+<!-- ===== HERO ===== -->
+<section id="hero" class="hero">
+    <div class="hero-content">
+        <h1>
+    <span id="typing-text"></span>
+    <span class="cursor">|</span>
+</h1>
+
+        <a href="#projects" class="hero-btn">View Projects</a>
+    </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section id="about" class="about reveal">
+    <div class="about-container">
+        <div class="about-image">
+            <img src="images/suryaprotfolio1.jpeg" alt="Surya">
         </div>
-    </section>
-
-    <section class="about">
-        <h2>About Me</h2>
-        <p>
-            MCA student passionate about building modern web applications using
-            React, Node.js and MongoDB.
-        </p>
-    </section>
-
-    <section class="skills">
-        <h2>Skills</h2>
-        <div class="skill-cards">
-            <div class="card">HTML</div>
-            <div class="card">CSS</div>
-            <div class="card">JavaScript</div>
-            <div class="card">React</div>
-            <div class="card">Node.js</div>
-            <div class="card">MongoDB</div>
+        <div class="about-text">
+            <h2>About Me</h2>
+            <p>
+                I am Surya Sekhar Nag, an MCA student passionate about Web Development.
+                I love building modern websites using HTML, CSS, JavaScript and React.
+                I am preparing myself to become a professional Full Stack Developer.
+            </p>
         </div>
-    </section>
+    </div>
+</section>
+
+<!-- ===== SKILLS ===== -->
+<section id="skills" class="skills reveal">
+    <h2>Skills</h2>
+    <div class="skill-cards">
+        <div class="card">HTML</div>
+        <div class="card">CSS</div>
+        <div class="card">JavaScript</div>
+        <div class="card">React</div>
+        <div class="card">Node.js</div>
+        <div class="card">MongoDB</div>
+    </div>
+</section>
+
+<!-- ===== PROJECTS ===== -->
+<section id="projects" class="projects">
+    <h2>My Projects</h2>
+
+    <div class="project-cards">
+
+        <div class="project-card">
+            <h3>Portfolio Website</h3>
+            <p>A modern personal portfolio built using HTML, CSS and JavaScript to showcase my skills and projects.</p>
+            <a href="#" class="project-btn">View Project →</a>
+        </div>
+
+        <div class="project-card">
+            <h3>GangZee – Social Media Platform</h3>
+            <p>A web-based social platform where users can react to posts based on emotions. Built using HTML, CSS, Bootstrap and JavaScript.</p>
+            <a href="#" class="project-btn">View Project →</a>
+        </div>
+
+        <div class="project-card">
+            <h3>Medicine Donation System</h3>
+            <p>An e-commerce based system that allows users to donate unused medicines to the needy using modern web technologies.</p>
+            <a href="#" class="project-btn">View Project →</a>
+        </div>
+
+    </div>
+</section>
+
+
+<script src="script.js"></script>
+<script>
+const text = "Hello, I'm Surya";
+const typingElement = document.getElementById("typing-text");
+
+let index = 0;
+
+function typeEffect() {
+    if (index < text.length) {
+        typingElement.innerHTML += text.charAt(index);
+        index++;
+        setTimeout(typeEffect, 80);
+    }
+}
+
+window.onload = typeEffect;
+</script>
 
 </body>
 </html>
