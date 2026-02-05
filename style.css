@@ -1,14 +1,23 @@
+/* ===== ROOT COLORS ===== */
+:root{
+    --primary: #ff9100;
+    --dark: #0d0d0d;
+    --card: #1a1a1a;
+    --text: #ffffff;
+}
+
+/* ===== GLOBAL ===== */
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
     font-family: Arial, Helvetica, sans-serif;
+    scroll-behavior: smooth;
 }
 
 body{
-    background:#0d0d0d;
-    color:white;
-    padding-top:90px;
+    background:var(--dark);
+    color:var(--text);
 }
 
 /* ===== NAVBAR ===== */
@@ -17,15 +26,16 @@ body{
     top:0;
     width:100%;
     padding:20px 60px;
-    background:rgba(0,0,0,0.8);
+    background:rgba(0,0,0,0.85);
     display:flex;
     justify-content:space-between;
     align-items:center;
     z-index:1000;
+    backdrop-filter: blur(6px);
 }
 
 .logo{
-    color:orange;
+    color:var(--primary);
     font-size:24px;
     font-weight:bold;
 }
@@ -40,121 +50,166 @@ body{
     text-decoration:none;
     color:white;
     font-size:18px;
+    transition:0.3s;
 }
 
 .nav-links a:hover{
-    color:orange;
+    color:var(--primary);
 }
 
 /* ===== HERO ===== */
+/* ===== HERO FIXED ===== */
+/* ===== HERO PREMIUM DESIGN ===== */
 .hero{
     height:100vh;
+    position:relative;
     background:url("images/suryaprotfolio1.jpeg") center/cover no-repeat;
     display:flex;
     justify-content:center;
     align-items:center;
     text-align:center;
+    overflow:hidden;
 }
 
-.hero-content h1{
-    font-size:50px;
-    color:orange;
+/* Dark overlay to remove dullness */
+.hero-overlay{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:linear-gradient(
+        rgba(0,0,0,0.75),
+        rgba(0,0,0,0.85)
+    );
+    z-index:1;
+}
+
+/* Content always above background */
+.hero-content{
+    position:relative;
+    z-index:2;
+    animation:fadeIn 2s ease forwards;
+}
+
+/* Animated Name */
+.hero-title{
+    font-size:56px;
+    color:white;
     margin-bottom:20px;
+    text-shadow:0 0 25px rgba(255,145,0,0.6);
 }
 
+.hero-title span{
+    color:orange;
+}
+
+/* Subtitle */
+.hero-subtitle{
+    font-size:22px;
+    color:#ccc;
+    margin-bottom:30px;
+    letter-spacing:1px;
+}
+
+/* Button */
 .hero-btn{
-    padding:12px 30px;
+    padding:14px 36px;
     border:2px solid orange;
     color:orange;
     text-decoration:none;
+    font-weight:600;
     transition:0.4s;
 }
 
 .hero-btn:hover{
     background:orange;
     color:black;
+    box-shadow:0 10px 30px rgba(255,145,0,0.5);
 }
+
+/* Fade animation */
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(40px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+
 
 /* ===== ABOUT ===== */
 .about{
-    padding:100px 60px;
+    padding:120px 60px;
 }
 
 .about-container{
     display:flex;
     align-items:center;
-    gap:50px;
+    gap:60px;
 }
 
 .about-image img{
-    width:300px;
-    border-radius:10px;
+    width:320px;
+    border-radius:12px;
 }
 
 .about-text h2{
-    color:orange;
-    margin-bottom:15px;
+    color:var(--primary);
+    margin-bottom:20px;
+    font-size:36px;
 }
 
 /* ===== SKILLS ===== */
 .skills{
-    padding:100px 60px;
+    padding:120px 60px;
     text-align:center;
 }
 
-.skill-cards{
-    margin-top:40px;
-    display:flex;
-    justify-content:center;
-    gap:20px;
+.skills h2{
+    color:var(--primary);
+    font-size:36px;
 }
 
-/* ===== Skills Hover Effect ===== */
+.skill-cards{
+    margin-top:50px;
+    display:flex;
+    justify-content:center;
+    gap:25px;
+    flex-wrap:wrap;
+}
+
 .card{
-    padding:10px 25px;
-    border-left:4px solid orange;
-    background:#1a1a1a;
-    transition:0.4s ease;
+    padding:12px 30px;
+    border-left:4px solid var(--primary);
+    background:var(--card);
     cursor:pointer;
+    transition:0.4s ease;
 }
 
 .card:hover{
     transform:translateY(-8px) scale(1.05);
-    background:orange;
+    background:var(--primary);
     color:black;
     box-shadow:0 10px 25px rgba(255,145,0,0.4);
 }
 
-
-.card{
-    padding:10px 25px;
-    border-left:4px solid orange;
-    background:#1a1a1a;
-}
-
 /* ===== PROJECTS ===== */
-/* ===== Project Card Hover Effect ===== */
-/* ===== Projects Section Premium Design ===== */
-
 .projects{
-    padding:120px 20px;
+    padding:120px 60px;
     text-align:center;
 }
 
 .projects h2{
-    font-size:44px;
+    font-size:40px;
     margin-bottom:60px;
     color:var(--primary);
 }
 
-/* Grid */
 .project-cards{
     display:grid;
     grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));
     gap:40px;
 }
 
-/* Card */
 .project-card{
     background:linear-gradient(145deg,#111,#1a1a1a);
     border:1px solid rgba(255,145,0,0.25);
@@ -166,63 +221,80 @@ body{
     overflow:hidden;
 }
 
-/* Glow effect on hover */
-.project-card::before{
-    content:"";
-    position:absolute;
-    top:-50%;
-    left:-50%;
-    width:200%;
-    height:200%;
-    background:radial-gradient(circle, rgba(255,145,0,0.08), transparent 60%);
-    transform:rotate(25deg);
-    transition:0.6s;
-}
-
-.project-card:hover::before{
-    top:-30%;
-    left:-30%;
-}
-
-/* Hover lift */
 .project-card:hover{
     transform:translateY(-14px);
-    border-color:var(--primary);
     box-shadow:0 20px 45px rgba(255,145,0,0.25);
 }
 
-/* Title */
 .project-card h3{
     color:var(--primary);
     margin-bottom:18px;
     font-size:22px;
 }
 
-/* Text */
 .project-card p{
     color:#bbb;
     line-height:1.7;
     margin-bottom:25px;
 }
 
-/* Button */
 .project-btn{
     text-decoration:none;
     color:var(--primary);
     font-weight:600;
-    border-bottom:2px solid transparent;
     transition:0.3s;
 }
 
 .project-btn:hover{
-    border-color:var(--primary);
     letter-spacing:1px;
 }
 
+/* ===== CONTACT ===== */
+/* ===== CONTACT ===== */
+
+.contact{
+    padding:120px 20px;
+    text-align:center;
+    background:#0d0d0d;
+}
+
+.contact h2{
+    color:orange;
+    font-size:38px;
+    margin-bottom:20px;
+}
+
+.contact-container{
+    max-width:700px;
+    margin:0 auto;
+    padding:40px;
+    background:#1a1a1a;
+    border-radius:12px;
+    border:1px solid rgba(255,145,0,0.3);
+}
+
+.contact-container p{
+    margin-bottom:25px;
+    font-size:18px;
+    color:#bbb;
+}
+
+.contact-btn{
+    display:inline-block;
+    padding:12px 30px;
+    border:2px solid orange;
+    color:orange;
+    text-decoration:none;
+    transition:0.3s ease;
+}
+
+.contact-btn:hover{
+    background:orange;
+    color:black;
+}
 
 
-
-/* ===== SCROLL ANIMATION ===== */
+/* ===== SCROLL REVEAL ===== */
 .reveal{
     opacity:0;
     transform:translateY(60px);
@@ -234,13 +306,26 @@ body{
     transform:translateY(0);
 }
 
-/* ===== Typing Animation ===== */
-
+/* ===== CURSOR BLINK ===== */
 .cursor{
     display:inline-block;
     margin-left:5px;
     color:var(--primary);
     animation:blink 0.8s infinite;
+    font-weight:bold;
+}
+
+@keyframes blink{
+    0%{opacity:1;}
+    50%{opacity:0;}
+    100%{opacity:1;}
+}
+
+.cursor{
+    display:inline-block;
+    margin-left:5px;
+    animation:blink 0.7s infinite;
+    color: var(--primary);
     font-weight:bold;
 }
 
